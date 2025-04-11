@@ -13,11 +13,11 @@
 
       <div class="col">
         <input type="text" id="descripcion" name="descripcion" class="form-control "
-          placeholder="Descripción" required [(ngModel)]="descripcion" [ngClass]="{'border-success': tipo === 'ingreso', 'border-danger': tipo === 'egreso'}"/>
+          placeholder="Descripción" required [(ngModel)]="descripcion" [ngClass]="{'bg-success': tipo === 'ingreso', 'bg-danger': tipo === 'egreso'}"/>
       </div>
 
       <div class="col-auto">
-        <input type="number" id="precio" name="precio" class="form-control" placeholder="Valor" required [ngClass]="{'border-success': tipo === 'ingreso','border-danger': tipo === 'egreso'}"  
+        <input type="number" id="precio" name="precio" class="form-control" placeholder="Valor" required [ngClass]="{'bg-success': tipo === 'ingreso','bg-danger': tipo === 'egreso'}"  
           [(ngModel)]="precio" />
       </div>
 

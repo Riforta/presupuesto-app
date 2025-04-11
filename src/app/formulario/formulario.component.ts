@@ -13,24 +13,30 @@ import { CommonModule } from '@angular/common';
 })
 export class FormularioComponent {
 
-  descripcion!: string;
-  precio!: number;
+  descripcion: string | null = null;
+  precio: number | null = null;
   tipo: string = 'ingreso';
 
   constructor(private presupuestoService: PresupuestoService) { }
 
   agregar() {
-    if (this.tipo === 'ingreso') {
-      const nuevoIngreso = new Ingreso(this.descripcion, this.precio);
-      this.presupuestoService.agregarIngreso(nuevoIngreso);
-    } else {
-      if(this.precio > 0) {
-      const nuevoEgreso = new Egreso(this.descripcion, (this.precio * -1));
-      this.presupuestoService.agregarEgreso(nuevoEgreso);
+    if (this.descripcion != null && this.precio != null) {
+      if (this.tipo === 'ingreso') {
+        const nuevoIngreso = new Ingreso(this.descripcion, this.precio);
+        this.presupuestoService.agregarIngreso(nuevoIngreso);
       } else {
-        console.log('Error. Ingrese un valor positivo.')
+        if (this.precio > 0) {
+          const nuevoEgreso = new Egreso(this.descripcion, (this.precio * -1));
+          this.presupuestoService.agregarEgreso(nuevoEgreso);
+        } else {
+          console.log('Error. Ingrese un valor positivo.')
+        }
       }
+    } else {
+      console.log("Ingrese un valor de descripcion y precio!")
     }
-
+    // Limpiar Formulario
+    this.descripcion = null;
+    this.precio = null;
   }
 }
