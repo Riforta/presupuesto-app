@@ -5,24 +5,24 @@
     <form class="row g-2" (submit)="agregar()">
 
       <div class="col-auto">
-        <select class="form-select bg-success" [(ngModel)]="tipo" name="tipo">
+        <select class="form-select" [(ngModel)]="tipo" name="tipo" [ngClass]="{'bg-danger': tipo === 'egreso', 'bg-success': tipo === 'ingreso'}">
           <option value="ingreso" selected>+</option>
           <option value="egreso">-</option>
         </select>
       </div>
 
       <div class="col">
-        <input type="text" id="descripcion" name="descripcion" class="form-control border-success"
-          placeholder="Descripción" required [(ngModel)]="descripcion" />
+        <input type="text" id="descripcion" name="descripcion" class="form-control "
+          placeholder="Descripción" required [(ngModel)]="descripcion" [ngClass]="{'border-success': tipo === 'ingreso', 'border-danger': tipo === 'egreso'}"/>
       </div>
 
       <div class="col-auto">
-        <input type="number" id="precio" name="precio" class="form-control border-success" placeholder="Valor" required
+        <input type="number" id="precio" name="precio" class="form-control" placeholder="Valor" required [ngClass]="{'border-success': tipo === 'ingreso','border-danger': tipo === 'egreso'}"  
           [(ngModel)]="precio" />
       </div>
 
       <div class="col-auto">
-        <button type="submit" class="btn btn-success">
+        <button type="submit" class="btn" [ngClass]="{'btn-success': tipo === 'ingreso','btn-danger': tipo=== 'egreso'}">
           <i class="bi bi-check-circle"></i> <!-- Bootstrap Icon -->
         </button>
       </div>

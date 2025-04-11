@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { PresupuestoService } from '../presupuesto.service';
 import { Ingreso } from '../modelos/Ingreso';
 import { Egreso } from '../modelos/Egreso';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-formulario',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css'
 })
